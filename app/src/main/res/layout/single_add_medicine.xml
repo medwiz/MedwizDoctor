@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:weightSum="3"
+    android:padding="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <EditText
+        android:id="@+id/etBrandName"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:background="@drawable/layout_rounded_bg"
+        android:layout_weight="1"
+        android:inputType="textPersonName"
+        android:padding="5dp"
+        android:hint="@string/brand_name"
+        android:fontFamily="@font/poppins_regular"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvBrandName"
+        />
+
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:id="@+id/etMrp"
+        android:layout_marginStart="@dimen/h4_dp_16"
+        android:layout_weight="0.5"
+        android:background="@drawable/layout_rounded_bg"
+        android:inputType="numberDecimal"
+        android:padding="5dp"
+        android:hint="@string/mrp"
+        android:fontFamily="@font/poppins_regular"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPrice"/>
+
+    <Button
+        android:id="@+id/btSave"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:text="@string/save"
+        android:layout_weight="1"
+        android:background="@drawable/confirm_btn"
+        android:layout_marginStart="10dp"
+        android:textSize="@dimen/h5_sp_14"
+        android:lineSpacingExtra="4sp"
+        android:textColor="#303245"
+        android:fontFamily="@font/poppins_regular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etMrp"
+        />
+
+    <ImageView
+        android:id="@+id/imgDelete"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:text="@string/delete"
+        android:layout_weight="0.45"
+        android:visibility="gone"
+       android:src="@drawable/ic_cancel"
+        android:layout_marginStart="10dp"/>
+
+</LinearLayout>

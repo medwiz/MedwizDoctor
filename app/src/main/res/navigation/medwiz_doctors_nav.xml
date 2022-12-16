@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/doctors_nav.xml"
+    app:startDestination="@id/baseFragment">
+
+    <fragment
+        android:id="@+id/baseFragment"
+        android:name="com.medwiz.medwizdoctor.ui.main.BaseFragment"
+        android:label="BaseFragment" >
+        <action
+            android:id="@+id/action_baseFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_baseFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.medwiz.medwizdoctor.ui.auth.LoginFragment"
+        android:label="LoginFragment">
+        <action
+            android:id="@+id/action_loginFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.medwiz.medwizdoctor.ui.auth.SignUpFragment"
+        android:label="SignUpFragment">
+        <action
+            android:id="@+id/action_signUpFragment_to_addDocInfoFragment"
+            app:destination="@id/addDocInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createPassword"
+        android:name="com.medwiz.medwizdoctor.ui.auth.CreatePassword"
+        android:label="CreatePassword">
+        <action
+            android:id="@+id/action_createPassword_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addDocInfoFragment"
+        android:name="com.medwiz.medwizdoctor.ui.auth.AddDocInfoFragment"
+        android:label="AddDocInfoFragment">
+        <action
+            android:id="@+id/action_addDocInfoFragment_to_createPassword"
+            app:destination="@id/createPassword" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.medwiz.medwizdoctor.ui.home.HomeFragment"
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_fragmentAddPrescriptions"
+            app:destination="@id/fragmentAddPrescriptions" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentAddPrescriptions"
+        android:name="com.medwiz.medwizdoctor.ui.prescription.FragmentAddPrescriptions"
+        android:label="FragmentAddPrescriptions" >
+        <action
+            android:id="@+id/action_fragmentAddPrescriptions_to_fragmentSendPrescription"
+            app:destination="@id/fragmentSendPrescription" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentSendPrescription"
+        android:name="com.medwiz.medwizdoctor.ui.prescription.FragmentSendPrescription"
+        android:label="FragmentSendPrescription" >
+        <action
+            android:id="@+id/action_fragmentSendPrescription_to_previewPrescriptionFragment"
+            app:destination="@id/previewPrescriptionFragment" />
+        <action
+            android:id="@+id/action_fragmentSendPrescription_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/previewPrescriptionFragment"
+        android:name="com.medwiz.medwizdoctor.ui.prescription.PreviewPrescriptionFragment"
+        android:label="PreviewPrescriptionFragment" />
+    <fragment
+        android:id="@+id/docProfileFragment"
+        android:name="com.medwiz.medwizdoctor.ui.profile.DocProfileFragment"
+        android:label="DocProfileFragment" />
+</navigation>
