@@ -101,7 +101,7 @@ class AuthViewModel @Inject constructor(private val repository: AuthRepoInterfac
             return@launch
         }
 
-        requestObj.addProperty(UtilConstants.USERNAME, username)
+        requestObj.addProperty(UtilConstants.USERPHONENUMBER, username)
         requestObj.addProperty(UtilConstants.PASSWORD, password)
         callLoginApi(requestObj)
     }
@@ -166,7 +166,7 @@ class AuthViewModel @Inject constructor(private val repository: AuthRepoInterfac
     private fun handleGetUserResponse(response: Response<LoginResponse>): Resource<LoginResponse> {
         if (response.isSuccessful) {
             response.body()?.let { resultResponse ->
-                if(resultResponse.id>0) {
+                if(resultResponse.user.id>0) {
                     getUserResponse = resultResponse
                     return Resource.Success(getUserResponse ?: resultResponse)
                 }

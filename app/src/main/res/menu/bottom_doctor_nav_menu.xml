@@ -11,23 +11,25 @@
         tools:targetApi="o" />
 
     <item
-        android:id="@+id/docAppointmentFragment"
-        android:icon="@drawable/ic_booking"
+        android:id="@+id/analysisFragment"
+        android:icon="@drawable/ic_analysis"
+        android:iconTint="@color/black"
+        app:showAsAction="withText"
+        android:title="@string/analysis"
+        tools:targetApi="o" />
+
+    <item
+        android:id="@+id/appointmentFragment"
+        android:icon="@drawable/ic_appointment"
         android:iconTint="@color/black"
         app:showAsAction="withText"
         android:title="@string/appointments"
         tools:targetApi="o" />
 
-    <item
-        android:id="@+id/docNotificationFragment"
-        android:icon="@drawable/ic_notification"
-        android:iconTint="@color/black"
-        app:showAsAction="withText"
-        android:title="@string/notification"
-        tools:targetApi="o" />
+
 
     <item
-        android:id="@+id/docProfileFragment"
+        android:id="@+id/profileFragment"
         android:icon="@drawable/ic_profile"
         android:iconTint="@color/black"
         app:showAsAction="withText"

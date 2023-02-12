@@ -2,7 +2,6 @@ package com.medwiz.medwizdoctor.ui.main
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory
-import com.medwiz.medwizdoctor.ui.auth.LoginFragment
 
 
 import javax.inject.Inject
@@ -14,7 +13,7 @@ class DefaultFragmentFactory @Inject constructor() : FragmentFactory() {
         className: String): Fragment {
 
         return when (className) {
-            LoginFragment::class.java.name-> LoginFragment()
+            //LoginFragment::class.java.name-> LoginFragment()
             //SignUpFragment::class.java.name-> SignUpFragment()
             else -> super.instantiate(classLoader, className)
         }

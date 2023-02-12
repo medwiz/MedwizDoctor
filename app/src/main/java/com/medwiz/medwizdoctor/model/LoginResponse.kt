@@ -3,25 +3,37 @@ package com.medwiz.medwizdoctor.model
 import android.os.Parcel
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
+import kotlinx.parcelize.RawValue
 
 @Parcelize
 data class LoginResponse(
-    var address: String,
-    var credit: String,
-    var email: String,
-    var mobile: String,
-    var firstname: String,
-    var lastname:String,
-    var pinCode: String,
-    var token: String,
-    var id: Long,
-    var userType: String,
-    var gender:String,
-    var age:Int
-):Parcelable{
-    constructor() : this("", "",
-        "", "", "",
-        "", "", "",
-        0, "","",0
-    )
-}
+    val token: String,
+    val user: @RawValue User
+):Parcelable
+data class User(
+    val address: Address,
+    val email: String,
+    val firstName: String,
+    val gender: String,
+    val id: Int,
+    val lastName: String,
+    val roles: List<Role>,
+    val userPhoneNumber: String
+)
+
+data class Address(
+    val address1: String,
+    val address2: String,
+    val city: String,
+    val country: String,
+    val id: Int,
+    val latitude: Double,
+    val longitude: Double,
+    val state: String,
+    val zip: String
+)
+
+data class Role(
+    val id: Int,
+    val roleName: String
+)

@@ -1,5 +1,4 @@
 package com.medwiz.medwizdoctor.ui.profile
-
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,8 +8,11 @@ import com.medwiz.medwizdoctor.databinding.SingleProfileItemBinding
 
 /**
  * @Author: Prithwiraj Nath
- * @Date:17/12/22
+ * @Date:23/01/23
  */
+
+
+
 class ProfileItemAdapter (private val context: Context,
                           private val itemList:MutableList<ProfileItemModel>,
                           private val listener: ProfileItemListener

@@ -39,13 +39,13 @@ object UtilConstants {
     const val refreshToken = "medwizRefreshToken"
     const val nearbyDocs="NEAR_BY_DOCS"
     const val nearbyDocsValue=10
-    const val baseurl = "http://52.66.214.145:9090/api/v1/"//"http://10.0.2.2:8080/api/v1/"
+    const val baseurl = "http://52.66.214.145:9090/api/v1/"//"http://10.0.2.2:8080/api/v1/
 
  const val addMedicine="medicine"
     const val updateMedicine="medicine/safeupdate"
  const val addLabTest="labtest"
-    const val register = "auth/register"
-    const val login = "auth/login"
+    const val register = "user/signup"
+    const val login = "user/signin"
     const val uploadFileApi="file/upload"
     const val getUserById="user"
     const val doctor="doctor"
@@ -76,6 +76,7 @@ object UtilConstants {
     const val entertainment = "Entertainment"
 
     const val USERNAME = "username"
+    const val USERPHONENUMBER: String="userPhoneNumber"
     const val PASSWORD ="password"
     const val TYPE_UPCOMING="upcoming"
     const val TYPE_COMPLETED="completed"
