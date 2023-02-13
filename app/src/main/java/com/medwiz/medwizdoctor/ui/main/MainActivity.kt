@@ -12,6 +12,7 @@ import com.medwiz.medwiz.model.Medication
 import com.medwiz.medwizdoctor.R
 import com.medwiz.medwizdoctor.databinding.ActivityMainBinding
 import com.medwiz.medwizdoctor.model.LoginResponse
+import com.medwiz.medwizdoctor.model.PatientResponse
 import com.medwiz.medwizdoctor.util.CustomLoaderDialog
 import com.medwiz.medwizdoctor.viewmodels.BottomSheetViewModel
 import com.medwiz.medwizdoctor.viewmodels.MainViewModel
@@ -22,7 +23,7 @@ import javax.inject.Inject
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     public val bottomSheetViewModel: BottomSheetViewModel by viewModels()
-
+    private var userDetails: PatientResponse?=null
     @Inject
     lateinit var fragmentFactory: DefaultFragmentFactory
     private var mCustomLoader: CustomLoaderDialog? = null
@@ -86,6 +87,13 @@ class MainActivity : AppCompatActivity() {
 
     fun hideLoading() {
         if (mCustomLoader != null) mCustomLoader?.cancel()
+    }
+
+    fun setUserDetails(data: PatientResponse?) {
+        this.userDetails=data
+    }
+    fun getUserDetails():PatientResponse{
+        return userDetails!!
     }
 
 

@@ -40,4 +40,7 @@
     <string name="reset_password">Reset Password</string>
     <string name="reset_password_details">Set the new password for your account so you can login and access all the features.</string>
     <string name="update_password">Update Password</string>
+    <string name="cancel_appointment">Cancel Appointment</string>
+    <string name="cancelled">Cancelled</string>
+    <string name="history">History</string>
 </resources>

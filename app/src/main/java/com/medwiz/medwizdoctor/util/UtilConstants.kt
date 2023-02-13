@@ -78,9 +78,9 @@ object UtilConstants {
     const val USERNAME = "username"
     const val USERPHONENUMBER: String="userPhoneNumber"
     const val PASSWORD ="password"
-    const val TYPE_UPCOMING="upcoming"
-    const val TYPE_COMPLETED="completed"
-    const val TYPE_CANCELLED="cancelled"
+    const val TYPE_UPCOMING="UPCOMING"
+    const val TYPE_COMPLETED="COMPLETED"
+    const val TYPE_CANCELLED="CANCELLED"
 
     const val STATUS_IN_PROGRESS = "inProgress"
     const val STATUS_ON_HOLD = "onHold"

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cv"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="10dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginEnd="10dp"
+    android:animateLayoutChanges="true"
+    app:cardUseCompatPadding="true">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="100dp"
+        android:layout_height="31dp"
+        android:id="@+id/btTagName"
+        android:layout_gravity="end"
+        android:background="@drawable/ic_cancelled_button"
+        android:padding="3dp"
+        android:text="@string/cancelled"
+        android:textAllCaps="false"
+        android:textColor="@color/white" />
+
+    <RelativeLayout
+        android:id="@+id/rlDoc"
+        android:layout_width="match_parent"
+        android:layout_height="188dp"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/profileImageView"
+            android:layout_width="92dp"
+            android:layout_height="87dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/layout_rounded_bg"
+            android:src="@drawable/ic_arrow_right" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="4dp"
+            android:layout_toEndOf="@+id/profileImageView"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/nameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins_bold"
+                android:gravity="top"
+                android:lineSpacingExtra="2sp"
+                android:text="John Britas"
+                android:textColor="@color/textColor"
+                android:textSize="@dimen/h5_sp_14"
+                android:textStyle="bold"
+                android:translationY="-0.79sp" />
+
+            <TextView
+                android:id="@+id/tvSpecialization"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Male|32"
+                android:textColor="@color/textColorGrey"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvFees"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Today|8:00 Am"
+                android:textColor="@color/textColorGrey"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imgLine"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_below="@id/linearLayout"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/ic_line" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imgLine"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_alignParentBottom="true"
+            android:gravity="center">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btCancelAppointment"
+                android:text="@string/cancel_appointment"
+                android:textAllCaps="false"
+                android:textColor="@color/blue"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:layout_alignParentStart="true" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="26dp"
+                android:gravity="center"
+                android:layout_centerInParent="true"
+                android:id="@+id/btHistory"
+                android:layout_alignParentEnd="true"
+                android:text="@string/history"
+                android:textAllCaps="false"
+                android:textColor="@color/orange"
+                android:background="@drawable/ic_button_border"/>
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
