@@ -43,4 +43,6 @@
     <string name="cancel_appointment">Cancel Appointment</string>
     <string name="cancelled">Cancelled</string>
     <string name="history">History</string>
+    <string name="hi_doctor">Hi Doctor</string>
+    <string name="see_all">See All</string>
 </resources>
