@@ -64,6 +64,9 @@ class AppointmentAdapter(
                 }
 
             }
+            binding.root.setOnClickListener {
+                listener.onClickItem(itemObj,position)
+            }
 //            binding.nameTextView.text = doctorItem.firstname+" "+doctorItem.lastname
 //            binding.tvSpecialization.text=doctorItem.specialization
 

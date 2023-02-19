@@ -45,4 +45,6 @@
     <string name="history">History</string>
     <string name="hi_doctor">Hi Doctor</string>
     <string name="see_all">See All</string>
+    <string name="backimage">backImage</string>
+    <string name="patient_details">Patient Details</string>
 </resources>

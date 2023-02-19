@@ -18,7 +18,11 @@
     <fragment
         android:id="@+id/appointmentFragment"
         android:name="com.medwiz.medwizdoctor.ui.appointment.AppointmentFragment"
-        android:label="AppointmentFragment" />
+        android:label="AppointmentFragment" >
+        <action
+            android:id="@+id/action_appointmentFragment_to_patientDetailsFragment"
+            app:destination="@id/patientDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.medwiz.medwizdoctor.ui.auth.login.LoginFragment"
@@ -34,4 +38,8 @@
         android:id="@+id/signUpFragment"
         android:name="com.medwiz.medwizdoctor.ui.auth.signUp.SignUpFragment"
         android:label="SignUpFragment" />
+    <fragment
+        android:id="@+id/patientDetailsFragment"
+        android:name="com.medwiz.medwizdoctor.ui.appointment.PatientDetailsFragment"
+        android:label="PatientDetailsFragment" />
 </navigation>

@@ -7,5 +7,5 @@ import com.medwiz.medwiz.model.Consultation
  * @Date:24/01/23
  */
 interface AppointmentListener {
-    fun onClickItem(obj:Consultation,position:Int)
+    fun onClickItem(obj:String,position:Int)
 }
