@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/tvBack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/patient_history"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins_bold"
+            android:padding="10dp"
+            android:gravity="start"
+            android:textSize="18sp"
+            android:drawablePadding="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:drawableLeftCompat="@drawable/ic_back" />
+        <TextView
+            android:id="@+id/tvMrdNoTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/mrd_no"
+            android:textSize="@dimen/h5_sp_14"
+            android:lineSpacingExtra="4sp"
+            android:translationY="-1.79sp"
+            android:textColor="#303245"
+            android:gravity="start"
+            android:layout_marginTop="@dimen/h5_dp_14"
+            android:fontFamily="@font/poppins_regular"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvBack"
+            />
+
+        <EditText
+            android:id="@+id/etMrdNo"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:background="@drawable/layout_rounded_bg"
+            android:inputType="number"
+            android:padding="5dp"
+            android:contentDescription="@string/mrd_no"
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvMrdNoTitle"
+            />
+
+        <TextView
+            android:id="@+id/tvFNameTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/first_name"
+            android:textSize="@dimen/h5_sp_14"
+            android:lineSpacingExtra="4sp"
+            android:translationY="-1.79sp"
+            android:textColor="#303245"
+            android:gravity="start"
+            android:layout_marginTop="@dimen/h5_dp_14"
+            android:fontFamily="@font/poppins_regular"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etMrdNo"
+            />
+
+        <EditText
+            android:id="@+id/etFName"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:background="@drawable/layout_rounded_bg"
+            android:inputType="textPersonName"
+            android:padding="5dp"
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvFNameTitle"
+            />
+
+        <TextView
+            android:id="@+id/tvLNameTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/last_name"
+            android:textSize="@dimen/h5_sp_14"
+            android:lineSpacingExtra="4sp"
+            android:translationY="-1.79sp"
+            android:textColor="#303245"
+            android:gravity="start"
+            android:layout_marginTop="@dimen/h5_dp_14"
+            android:fontFamily="@font/poppins_regular"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etFName"
+            />
+
+
+        <EditText
+            android:id="@+id/etLName"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:background="@drawable/layout_rounded_bg"
+            android:inputType="textPersonName"
+            android:padding="5dp"
+            android:maxLength="10"
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvLNameTitle"
+            />
+
+        <TextView
+            android:id="@+id/tvAge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/age"
+            android:textSize="@dimen/h5_sp_14"
+            android:lineSpacingExtra="4sp"
+            android:translationY="-1.79sp"
+            android:textColor="#303245"
+            android:gravity="start"
+            android:layout_marginTop="@dimen/h5_dp_14"
+            android:fontFamily="@font/poppins_regular"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etLName"
+            />
+
+
+        <EditText
+            android:id="@+id/etAge"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:background="@drawable/layout_rounded_bg"
+            android:inputType="number"
+            android:padding="5dp"
+            android:maxLength="2"
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvAge"
+            />
+
+        <TextView
+            android:id="@+id/tvGuardianName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/guardian_name"
+            android:textSize="@dimen/h5_sp_14"
+            android:lineSpacingExtra="4sp"
+            android:translationY="-1.79sp"
+            android:textColor="#303245"
+            android:gravity="start"
+            android:layout_marginTop="@dimen/h5_dp_14"
+            android:fontFamily="@font/poppins_regular"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etAge"
+            />
+
+
+        <EditText
+            android:id="@+id/etGuardianName"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:background="@drawable/layout_rounded_bg"
+            android:inputType="textPersonName"
+            android:padding="5dp"
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvGuardianName"
+            />
+        <Spinner
+            android:id="@+id/spinnerGender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/phone_number"
+            android:textSize="@dimen/h5_sp_14"
+            android:lineSpacingExtra="4sp"
+            android:translationY="-1.79sp"
+            android:textColor="#303245"
+            android:gravity="start"
+            android:layout_marginTop="@dimen/h5_dp_14"
+            android:fontFamily="@font/poppins_regular"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etGuardianName"
+            />
+
+
+        <TextView
+            android:id="@+id/tvPhoneTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/phone_number"
+            android:textSize="@dimen/h5_sp_14"
+            android:lineSpacingExtra="4sp"
+            android:translationY="-1.79sp"
+            android:textColor="#303245"
+            android:gravity="start"
+            android:layout_marginTop="@dimen/h5_dp_14"
+            android:fontFamily="@font/poppins_regular"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinnerGender"
+            />
+
+        <EditText
+            android:id="@+id/etPhoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:background="@drawable/layout_rounded_bg"
+            android:inputType="phone"
+            android:padding="5dp"
+            android:maxLength="10"
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvPhoneTitle"
+            />
+
+        <TextView
+            android:id="@+id/tvAddressTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/address"
+            android:textSize="@dimen/h5_sp_14"
+            android:lineSpacingExtra="4sp"
+            android:translationY="-1.79sp"
+            android:textColor="#303245"
+            android:gravity="start"
+            android:layout_marginTop="@dimen/h5_dp_14"
+            android:fontFamily="@font/poppins_regular"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etPhoneNumber"
+            />
+
+        <EditText
+            android:id="@+id/etAddress"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:background="@drawable/layout_rounded_bg"
+            android:inputType="textPostalAddress"
+            android:padding="5dp"
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvAddressTitle"
+            />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1"
+            android:orientation="horizontal"
+            android:id="@+id/radioGroupVisit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etAddress"
+           >
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/new_visit"
+                android:id="@+id/radioButton"
+                android:checked="true"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/follow_up"
+                android:id="@+id/radioButton2"
+                android:checked="false"
+                android:textSize="14sp"
+                android:layout_weight="0.13" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/tvChiefComplaintsTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/chief_complaints"
+            android:textSize="@dimen/h5_sp_14"
+            android:lineSpacingExtra="4sp"
+            android:translationY="-1.79sp"
+            android:textColor="#303245"
+            android:gravity="start"
+            android:layout_marginTop="@dimen/h5_dp_14"
+            android:fontFamily="@font/poppins_regular"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radioGroupVisit"
+            />
+
+        <EditText
+            android:id="@+id/etChiefComplaints"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/layout_rounded_bg"
+            android:inputType="textMultiLine"
+            android:padding="5dp"
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvChiefComplaintsTitle"
+            />
+
+        <TextView
+            android:id="@+id/tvHOPITitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/hopi"
+            android:textSize="@dimen/h5_sp_14"
+            android:lineSpacingExtra="4sp"
+            android:translationY="-1.79sp"
+            android:textColor="#303245"
+            android:gravity="start"
+            android:layout_marginTop="@dimen/h5_dp_14"
+            android:fontFamily="@font/poppins_regular"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etChiefComplaints"
+            />
+
+        <EditText
+            android:id="@+id/etHOPI"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:background="@drawable/layout_rounded_bg"
+            android:inputType="number"
+            android:padding="5dp"
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvHOPITitle"
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

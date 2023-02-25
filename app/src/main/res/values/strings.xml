@@ -47,4 +47,11 @@
     <string name="see_all">See All</string>
     <string name="backimage">backImage</string>
     <string name="patient_details">Patient Details</string>
+    <string name="patient_history">Patient History</string>
+    <string name="mrd_no">MRD NO</string>
+    <string name="guardian_name">Guardian Name(S/O,D/O,W/O)</string>
+    <string name="new_visit">New visit</string>
+    <string name="follow_up">Follow Up</string>
+    <string name="chief_complaints">Chief Complaints</string>
+    <string name="hopi">HOPI</string>
 </resources>
