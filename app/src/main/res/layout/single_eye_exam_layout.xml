@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="4dp"
+    android:weightSum="3">
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:id="@+id/tvEyeTestName"
+        android:textSize="@dimen/h5_sp_14"
+        android:lineSpacingExtra="4sp"
+        android:translationY="-1.79sp"
+        android:textColor="#303245"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:fontFamily="@font/poppins_regular"
+        android:text="Anterior Chamber"/>
+
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/etRightEyeValue"
+        android:layout_weight="1"
+        android:textSize="@dimen/h5_sp_14"
+        android:layout_marginStart="3dp"
+        android:layout_gravity="center"
+        android:background="@drawable/layout_rounded_bg"
+        android:gravity="center"
+        android:padding="2dp"
+        android:hint="@string/right_eye"
+        android:fontFamily="@font/poppins_regular"
+        android:textColor="@color/black"/>
+
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/etLeftEyeValue"
+        android:layout_weight="1"
+        android:textSize="@dimen/h5_sp_14"
+        android:layout_marginLeft="2dp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:hint="@string/left_eye"
+        android:background="@drawable/layout_rounded_bg"
+        android:padding="2dp"
+        android:fontFamily="@font/poppins_regular"
+        android:textColor="@color/black"/>
+
+</LinearLayout>

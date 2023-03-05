@@ -8,4 +8,5 @@ import com.medwiz.medwiz.model.Consultation
  */
 interface AppointmentListener {
     fun onClickItem(obj:String,position:Int)
+    fun onClickHistory(obj:String,position:Int)
 }

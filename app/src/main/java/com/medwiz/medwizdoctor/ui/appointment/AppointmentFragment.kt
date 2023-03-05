@@ -105,4 +105,8 @@ class AppointmentFragment:Fragment(R.layout.fragment_appointment),AppointmentLis
     override fun onClickItem(obj: String, position: Int) {
         findNavController().navigate(R.id.action_appointmentFragment_to_patientDetailsFragment)
     }
+
+    override fun onClickHistory(obj: String, position: Int) {
+        findNavController().navigate(R.id.action_appointmentFragment_to_patientHistoryFragment)
+    }
 }

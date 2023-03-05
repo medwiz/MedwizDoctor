@@ -1,0 +1,111 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TableLayout
+        android:id="@+id/table_heading_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="4dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableRow>
+
+            <TextView
+                style="@style/table_header"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_column="0"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:text="@string/eye"/>
+
+            <TextView
+                android:layout_height="30dp"
+                android:layout_width="0dp"
+                android:layout_column="1"
+                android:layout_weight="1"
+                android:text="@string/sph"
+                style="@style/table_header"
+                android:textAlignment="center"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"/>
+
+            <TextView
+                android:layout_height="30dp"
+                android:layout_width="0dp"
+                android:layout_column="2"
+                android:layout_weight="1"
+                android:text="@string/cyl"
+                style="@style/table_header"
+                android:textAlignment="center"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"/>
+            <TextView
+                style="@style/table_header"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_column="0"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:text="@string/axis"/>
+
+            <TextView
+                android:layout_height="30dp"
+                android:layout_width="0dp"
+                android:layout_column="1"
+                android:layout_weight="1"
+                android:text="@string/vision"
+                style="@style/table_header"
+                android:textAlignment="center"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"/>
+
+            <TextView
+                android:layout_height="30dp"
+                android:layout_width="0dp"
+                android:layout_column="2"
+                android:layout_weight="1"
+                android:text="@string/add"
+                style="@style/table_header"
+                android:textAlignment="center"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"/>
+            <TextView
+                android:layout_height="30dp"
+                android:layout_width="0dp"
+                android:layout_column="2"
+                android:layout_weight="1"
+                android:text="@string/near_vn"
+                style="@style/table_header"
+                android:textAlignment="center"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"/>
+        </TableRow>
+    </TableLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/table_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:itemCount="2"
+        tools:listitem="@layout/eye_table_row_layout"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/table_heading_layout">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

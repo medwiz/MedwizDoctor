@@ -54,4 +54,27 @@
     <string name="follow_up">Follow Up</string>
     <string name="chief_complaints">Chief Complaints</string>
     <string name="hopi">HOPI</string>
+    <string name="past_medical_history">Past Medical History</string>
+    <string name="surgical_history">Surgical History</string>
+    <string name="family_history">Family History</string>
+    <string name="menstrual_history">Menstrual History</string>
+    <string name="current_medication">Current Medication</string>
+    <string name="immunization_history_child_case">Immunization History(Child case)</string>
+    <string name="ocular_trauma">Ocular Trauma</string>
+    <string name="subjective_refraction">Subjective Refraction</string>
+    <string name="eye">Eye</string>
+    <string name="sph">Sph</string>
+    <string name="cyl">Cyl</string>
+    <string name="near_vn">Near vn</string>
+    <string name="add">Add</string>
+    <string name="vision">Vision</string>
+    <string name="axis">Axis</string>
+    <string name="eye_examination">Eye Examination</string>
+    <string name="right_eye">Right Eye</string>
+    <string name="left_eye">Left Eye</string>
+    <string name="provisional_diagnosis">Provisional Diagnosis</string>
+    <string name="treatment_plan">Treatment Plan</string>
+    <string name="investigations_advice">Investigations Advice</string>
+    <string name="next_appointment">Next Appointment</string>
+    <string name="save">Save</string>
 </resources>
