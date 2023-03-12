@@ -10,6 +10,8 @@ import com.medwiz.medwizdoctor.repository.file.FileRepoInterface
 import com.medwiz.medwizdoctor.repository.file.FileRepository
 import com.medwiz.medwizdoctor.repository.prescription.PrescriptionRepoInterface
 import com.medwiz.medwizdoctor.repository.prescription.PrescriptionRepository
+import com.medwiz.medwizdoctor.repository.profile.MyProfileInterface
+import com.medwiz.medwizdoctor.repository.profile.MyProfileRepository
 import com.medwiz.medwizdoctor.repository.search.SearchRepoInterface
 import com.medwiz.medwizdoctor.repository.search.SearchRepository
 import com.medwiz.medwizdoctor.util.UtilConstants
@@ -114,5 +116,17 @@ object ApiModule {
     @Provides
     fun provideSearchRepository( api: SearchApi) =
         SearchRepository(api) as SearchRepoInterface
+
+    @Provides
+    @Singleton
+    fun provideProfile(retrofit: Retrofit): MyProfileApi {
+        return retrofit.create(MyProfileApi::class.java)
+    }
+    @Singleton
+    @Provides
+    fun provideProfileRepository( api: MyProfileApi) =
+        MyProfileRepository(api) as MyProfileInterface
+
+
 
 }

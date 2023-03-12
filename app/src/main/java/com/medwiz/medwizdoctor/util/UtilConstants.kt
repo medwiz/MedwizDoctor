@@ -1,5 +1,7 @@
 package com.medwiz.medwizdoctor.util
 
+import android.Manifest
+
 object UtilConstants {
     const val SCREEN_NAME:String="screen_name"
  const val shop:String="shop"
@@ -95,6 +97,12 @@ object UtilConstants {
     const val ITEM_SETTING=3
     const val ITEM_LOGOUT=4
     const val ITEM_TERMS=5
+
+    var PERMISSIONS = arrayOf(
+        Manifest.permission.CAMERA,
+        Manifest.permission.READ_EXTERNAL_STORAGE,
+        Manifest.permission.WRITE_EXTERNAL_STORAGE
+    )
 
 
 

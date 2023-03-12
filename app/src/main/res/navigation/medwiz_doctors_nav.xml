@@ -10,7 +10,11 @@
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.medwiz.medwizdoctor.ui.profile.ProfileFragment"
-        android:label="ProfileFragment" />
+        android:label="ProfileFragment" >
+        <action
+            android:id="@+id/action_profileFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+    </fragment>
     <fragment
         android:id="@+id/analysisFragment"
         android:name="com.medwiz.medwizdoctor.ui.analysis.AnalysisFragment"
@@ -49,4 +53,24 @@
         android:id="@+id/patientHistoryFragment"
         android:name="com.medwiz.medwizdoctor.ui.history.PatientHistoryFragment"
         android:label="PatientHistoryFragment" />
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.medwiz.medwizdoctor.ui.profile.EditProfileFragment"
+        android:label="EditProfileFragment" >
+        <action
+            android:id="@+id/action_editProfileFragment_to_addClinicFragment"
+            app:destination="@id/addClinicFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addClinicFragment"
+        android:name="com.medwiz.medwizdoctor.ui.clinic.AddClinicFragment"
+        android:label="AddClinicFragment" >
+        <action
+            android:id="@+id/action_addClinicFragment_to_clinicDetailsFragment"
+            app:destination="@id/clinicDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/clinicDetailsFragment"
+        android:name="com.medwiz.medwizdoctor.ui.clinic.ClinicDetailsFragment"
+        android:label="ClinicDetailsFragment" />
 </navigation>

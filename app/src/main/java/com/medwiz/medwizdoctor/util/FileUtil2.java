@@ -17,11 +17,11 @@ import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 
-public class FileUtil {
+public class FileUtil2 {
     private static final int EOF = -1;
     private static final int DEFAULT_BUFFER_SIZE = 1024 * 4;
 
-    private FileUtil() {
+    private FileUtil2() {
 
     }
 
