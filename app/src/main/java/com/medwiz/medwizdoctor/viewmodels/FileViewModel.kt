@@ -22,19 +22,19 @@ import javax.inject.Inject
 class FileViewModel @Inject constructor(private val repository: FileRepoInterface, @ApplicationContext private val context: Context):ViewModel() {
 
 
-    val uploadFile:MutableLiveData<Resource<FileResponse>> = MutableLiveData()
-    var uploadFileResponse:FileResponse?=null
+    val uploadFile:MutableLiveData<Resource<String>> = MutableLiveData()
+    var uploadFileResponse:String?=null
 
 
 
-    public fun uploadFile(file: MultipartBody.Part)=viewModelScope.launch {
-        callFileUploadApi(file)
+    public fun uploadFile(token:String,file: MultipartBody.Part,doctorUseId:String)=viewModelScope.launch {
+        callFileUploadApi(token,file,doctorUseId)
     }
-    private suspend fun callFileUploadApi(file: MultipartBody.Part){
+    private suspend fun callFileUploadApi(token:String,file: MultipartBody.Part,doctorUseId:String){
         uploadFile.postValue(Resource.Loading())
         try{
             if(NetworkUtils.isInternetAvailable(context)){
-                val response = repository.uploadFile(file)
+                val response = repository.uploadFile(token,file,doctorUseId)
                 uploadFile.postValue(handleFileUploadResponse(response))
             }
             else
@@ -48,10 +48,10 @@ class FileViewModel @Inject constructor(private val repository: FileRepoInterfac
         }
     }
 
-    private fun handleFileUploadResponse(response: Response<FileResponse>): Resource<FileResponse> {
+    private fun handleFileUploadResponse(response: Response<String>): Resource<String> {
         if (response.isSuccessful) {
             response.body()?.let { resultResponse ->
-                if(resultResponse.fileSize>0) {
+                if(resultResponse.isNotEmpty()) {
                     uploadFileResponse = resultResponse
                     return Resource.Success(uploadFileResponse ?: resultResponse)
                 }

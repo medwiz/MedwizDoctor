@@ -8,28 +8,26 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.content.res.Resources
 import android.graphics.Color
-import android.os.Build
 import android.text.TextUtils
 import android.util.Patterns
 import android.view.View
 import android.view.Window
 import android.widget.Button
 import android.widget.TextView
-import androidx.annotation.RequiresApi
-import androidx.core.content.ContextCompat.startActivity
+import android.widget.Toast
 import androidx.core.content.edit
 import androidx.fragment.app.FragmentActivity
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
+import com.google.android.material.snackbar.Snackbar
 import com.medwiz.medwizdoctor.R
 import com.medwiz.medwizdoctor.model.CustomTimeEntity
 import com.medwiz.medwizdoctor.ui.main.MainActivity
-import com.google.android.material.snackbar.Snackbar
 import org.json.JSONObject
+import java.sql.Time
+import java.text.Format
 import java.text.SimpleDateFormat
-import java.time.LocalDateTime
 import java.util.*
-import kotlin.collections.ArrayList
 
 
 object MedWizUtils {
@@ -41,7 +39,15 @@ object MedWizUtils {
         }
     }
 
-
+     fun getTime(hr: Int, min: Int): String? {
+        val tme = Time(hr, min, 0) //seconds by default set to zero
+        val formatter: Format
+        formatter = SimpleDateFormat("h:mm a")
+        return formatter.format(tme)
+    }
+    fun showToast(context: Context,str:String){
+        Toast.makeText(context,str, Toast.LENGTH_SHORT).show()
+    }
 
      fun showErrorPopup(activity: Context, message: String) {
         val dialog = Dialog(activity)

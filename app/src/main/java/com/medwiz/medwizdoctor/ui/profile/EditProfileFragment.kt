@@ -20,11 +20,14 @@ import com.bumptech.glide.request.Request
 import com.bumptech.glide.request.target.SizeReadyCallback
 import com.bumptech.glide.request.target.Target
 import com.bumptech.glide.request.transition.Transition
+import com.medwiz.medwiz.model.Doctors
 import com.medwiz.medwiz.model.ProfileItemModel
 
 import com.medwiz.medwizdoctor.R
 import com.medwiz.medwizdoctor.databinding.FragmentEditProfileBinding
 import com.medwiz.medwizdoctor.databinding.FragmentProfileBinding
+import com.medwiz.medwizdoctor.model.User
+import com.medwiz.medwizdoctor.ui.main.MainActivity
 import com.medwiz.medwizdoctor.util.FileUtils
 import com.medwiz.medwizdoctor.util.MedWizUtils
 import com.medwiz.medwizdoctor.util.UtilConstants
@@ -41,6 +44,7 @@ import java.util.*
 class EditProfileFragment:Fragment(R.layout.fragment_edit_profile),View.OnClickListener {
     private lateinit var binding: FragmentEditProfileBinding
     private val profileViewModel: ProfileViewModel by viewModels()
+    private var user: Doctors?=null
     private var adapter: ProfileItemAdapter?=null
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -48,12 +52,17 @@ class EditProfileFragment:Fragment(R.layout.fragment_edit_profile),View.OnClickL
         binding.tvBack.setOnClickListener (this)
         binding.tvUpload.setOnClickListener(this)
         binding.btAddClinic.setOnClickListener  (this)
+        binding.ivCamera.setOnClickListener (this)
+        this.user=(activity as MainActivity).getUserDetails()
 
     }
 
     override fun onClick(view: View?) {
         when (view) {
             binding.tvUpload -> {
+                askCameraOrGalleryOptions()
+            }
+            binding.ivCamera->{
                 askCameraOrGalleryOptions()
             }
 
@@ -162,8 +171,7 @@ class EditProfileFragment:Fragment(R.layout.fragment_edit_profile),View.OnClickL
                             val file: File = FileUtils.saveFileInCache(
                                 requireActivity(),
                                 resource.bitmap,
-                                "tmp_" + System.currentTimeMillis() + ".jpg"
-                            )!!
+                                "tmp_" + System.currentTimeMillis() + ".jpg")!!
                             withContext(Dispatchers.Main) {
 //                                profileViewModel.uploadFile.value = FileUploadRequest(
 //                                    file = file

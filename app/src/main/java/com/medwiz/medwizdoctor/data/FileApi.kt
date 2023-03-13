@@ -7,8 +7,10 @@ import retrofit2.http.*
 
 interface FileApi {
     @Multipart
-    @POST(UtilConstants.uploadFileApi)
-    suspend fun upload(@Part file: MultipartBody.Part): Response<FileResponse>
+    @POST(UtilConstants.uploadProfilePictureApi+"{doctorUserId}")
+    suspend fun upload(@Header("Authorization") accessToken: String,
+                       @Part file: MultipartBody.Part,
+                       @Path("email")email:String): Response<String>
 
 
 }

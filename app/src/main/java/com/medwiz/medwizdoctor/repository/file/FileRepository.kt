@@ -9,9 +9,9 @@ import javax.inject.Inject
 class FileRepository @Inject constructor(private val api: FileApi): FileRepoInterface {
 
 
-    override suspend fun uploadFile(file: MultipartBody.Part): Response<FileResponse> {
+    override suspend fun uploadFile(token:String,file: MultipartBody.Part,doctorId:String): Response<String> {
 
-        return api.upload(file)
+        return api.upload(token,file,doctorId)
     }
 
 

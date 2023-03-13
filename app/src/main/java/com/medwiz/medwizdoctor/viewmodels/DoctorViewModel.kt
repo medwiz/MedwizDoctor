@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.medwiz.medwiz.data.reponse.CommonResponse
+import com.medwiz.medwiz.model.Doctors
 import com.medwiz.medwizdoctor.repository.doctor.DoctorRepoInterface
 import com.medwiz.medwizdoctor.model.LoginResponse
 import com.medwiz.medwizdoctor.util.NetworkUtils
@@ -22,8 +23,8 @@ import javax.inject.Inject
 @HiltViewModel
 class DoctorViewModel @Inject constructor(private val repository: DoctorRepoInterface, @ApplicationContext private val context: Context):ViewModel() {
 
-    val getDoctor: MutableLiveData<Resource<LoginResponse>> = MutableLiveData()
-    var getDoctorResponse: LoginResponse? = null
+    val getDoctor: MutableLiveData<Resource<Doctors>> = MutableLiveData()
+    var getDoctorResponse: Doctors? = null
 
     val registerDoctor: MutableLiveData<Resource<CommonResponse>> = MutableLiveData()
     var registerDoctorResponse: CommonResponse? = null
@@ -31,14 +32,14 @@ class DoctorViewModel @Inject constructor(private val repository: DoctorRepoInte
 
 
 
-    public fun getDoctorByEmail(token:String,email:String)=viewModelScope.launch {
-        callGetUserApi(token,email)
+    public fun getDoctorByEmail(token:String,userId:String)=viewModelScope.launch {
+        callGetUserApi(token,userId)
     }
-    private suspend fun callGetUserApi(token:String,email:String){
+    private suspend fun callGetUserApi(token:String,userId:String){
         getDoctor.postValue(Resource.Loading())
         try{
             if(NetworkUtils.isInternetAvailable(context)){
-                val response = repository.getDoctorByEmail(token,email)
+                val response = repository.getDoctorByUserID(token,userId)
                 getDoctor.postValue(handleGetUserResponse(response))
             }
             else
@@ -52,7 +53,7 @@ class DoctorViewModel @Inject constructor(private val repository: DoctorRepoInte
         }
     }
 
-    private fun handleGetUserResponse(response: Response<LoginResponse>): Resource<LoginResponse> {
+    private fun handleGetUserResponse(response: Response<Doctors>): Resource<Doctors> {
         if (response.isSuccessful) {
             response.body()?.let { resultResponse ->
                 if(resultResponse.user.id>0) {

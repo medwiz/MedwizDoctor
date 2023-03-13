@@ -3,8 +3,16 @@ package com.medwiz.medwizdoctor.ui.home
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import com.bumptech.glide.Glide
 import com.medwiz.medwizdoctor.R
 import com.medwiz.medwizdoctor.databinding.FragmentHomeBinding
+import com.medwiz.medwizdoctor.ui.main.MainActivity
+import com.medwiz.medwizdoctor.util.MedWizUtils
+import com.medwiz.medwizdoctor.util.Resource
+import com.medwiz.medwizdoctor.util.UtilConstants
+import com.medwiz.medwizdoctor.viewmodels.DoctorViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
@@ -14,9 +22,48 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class HomeFragment: Fragment(R.layout.fragment_home) {
     private lateinit var binding: FragmentHomeBinding
-
+    private val viewModel: DoctorViewModel by viewModels()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentHomeBinding.bind(view)
+        val token=MedWizUtils.storeValueInPreference(requireContext(), UtilConstants.accessToken,"",false)
+        val userId=  MedWizUtils.storeValueInPreference(
+            requireContext(),
+            UtilConstants.userId,
+           "",
+            false
+        )
+        viewModel.getDoctorByEmail(token,userId)
+
+        viewModel.getDoctor.observe(viewLifecycleOwner, Observer {
+            when (it) {
+                is Resource.Loading -> {
+                    (activity as MainActivity).showLoading()
+                }
+
+                is Resource.Success -> {
+                    (activity as MainActivity).hideLoading()
+                    (activity as MainActivity).setUserDetails(it.data)
+                    val name= it.data!!.user.firstName+" "+it.data.user.lastName
+                    binding.tvDocName.text=name
+                    Glide.with(requireContext())
+                        .load(it.data.user.imageUrl)
+                        .into(binding.imgProfilePic)
+
+
+                }
+                is Resource.Error -> {
+                    (activity as MainActivity).hideLoading()
+                    if(it.message==UtilConstants.unauthorized){
+                        MedWizUtils.performLogout(requireContext(),requireActivity())
+                    }else{
+                    MedWizUtils.showErrorPopup(
+                        requireActivity(),
+                        it.message.toString()
+                    )
+                    }
+                }
+            }
+        })
     }
 }

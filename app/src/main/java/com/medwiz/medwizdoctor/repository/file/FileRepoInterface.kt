@@ -6,6 +6,6 @@ import retrofit2.Response
 
 interface FileRepoInterface {
 
-    suspend fun uploadFile(file: MultipartBody.Part):Response<FileResponse>
+    suspend fun uploadFile(token:String,file: MultipartBody.Part,doctorId:String):Response<String>
 
 }

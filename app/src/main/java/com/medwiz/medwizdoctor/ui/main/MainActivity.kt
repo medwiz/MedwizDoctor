@@ -8,6 +8,7 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.medwiz.medwiz.model.Consultation
+import com.medwiz.medwiz.model.Doctors
 import com.medwiz.medwiz.model.Medication
 import com.medwiz.medwizdoctor.R
 import com.medwiz.medwizdoctor.databinding.ActivityMainBinding
@@ -23,7 +24,7 @@ import javax.inject.Inject
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     public val bottomSheetViewModel: BottomSheetViewModel by viewModels()
-    private var userDetails: PatientResponse?=null
+    private var userDetails: Doctors?=null
     @Inject
     lateinit var fragmentFactory: DefaultFragmentFactory
     private var mCustomLoader: CustomLoaderDialog? = null
@@ -89,10 +90,10 @@ class MainActivity : AppCompatActivity() {
         if (mCustomLoader != null) mCustomLoader?.cancel()
     }
 
-    fun setUserDetails(data: PatientResponse?) {
+    fun setUserDetails(data: Doctors?) {
         this.userDetails=data
     }
-    fun getUserDetails():PatientResponse{
+    fun getUserDetails():Doctors{
         return userDetails!!
     }
 

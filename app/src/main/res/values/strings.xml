@@ -86,4 +86,7 @@
     <string name="morning">Morning</string>
     <string name="end_time">End time</string>
     <string name="start_time">Start time</string>
+    <string name="enter_day_name_eg_monday">Enter day name, eg:Monday</string>
+    <string name="select_day">Select Day</string>
+    <string name="select_time">Select</string>
 </resources>

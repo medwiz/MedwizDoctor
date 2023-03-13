@@ -4,20 +4,22 @@ import android.os.Parcel
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 import kotlinx.parcelize.RawValue
-
-@Parcelize
 data class LoginResponse(
     val token: String,
-    val user: @RawValue User
-):Parcelable
+    val user: User
+)
+
 data class User(
     val address: Address,
+    val createdAt: String,
     val email: String,
     val firstName: String,
     val gender: String,
     val id: Int,
+    val imageUrl: String,
     val lastName: String,
     val roles: List<Role>,
+    val updatedAt: String,
     val userPhoneNumber: String
 )
 

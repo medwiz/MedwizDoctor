@@ -17,18 +17,22 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
+        android:layout_marginBottom="30dp"
         android:orientation="vertical">
 
-        <TextView
+        <Spinner
+            android:id="@+id/spinnerDay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/tvDay"
-            android:layout_gravity="center"
-            android:textColor="@color/black"
-            android:fontFamily="@font/poppins_medium"
-            android:gravity="center"
-            android:textSize="18sp"
-            android:text="Day: Monday"/>
+            android:text="@string/select_day"
+            android:textSize="@dimen/h5_sp_14"
+            android:lineSpacingExtra="4sp"
+            android:translationY="-1.79sp"
+            android:textColor="#303245"
+            android:gravity="start"
+            android:layout_marginTop="@dimen/h5_dp_14"
+            android:fontFamily="@font/poppins_regular"
+            />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -87,21 +91,25 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/tvMoStartTime"
+                android:text="@string/select_time"
                 android:layout_centerInParent="true"
                 android:textColor="@color/black"
                 android:fontFamily="@font/poppins_regular"
                 android:textSize="18sp"
-                android:text="8:00 AM"/>
+                
+               />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/tvMoEndTime"
+                android:text="@string/select_time"
                 android:layout_alignParentEnd="true"
                 android:textColor="@color/black"
                 android:fontFamily="@font/poppins_regular"
                 android:textSize="18sp"
-                android:text="9:30 PM"/>
+                
+               />
 
         </RelativeLayout>
 
@@ -125,21 +133,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/tvAfStartTime"
+                android:text="@string/select_time"
                 android:layout_centerInParent="true"
                 android:textColor="@color/black"
                 android:fontFamily="@font/poppins_regular"
                 android:textSize="18sp"
-                android:text="8:00 AM"/>
+               
+                />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/tvAfEndTime"
+                android:text="@string/select_time"
                 android:layout_alignParentEnd="true"
                 android:textColor="@color/black"
                 android:fontFamily="@font/poppins_regular"
-                android:textSize="18sp"
-                android:text="9:30 PM"/>
+                android:textSize="18sp" />
 
         </RelativeLayout>
 
@@ -164,22 +174,39 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/tvEvStartTime"
                 android:layout_centerInParent="true"
+                android:text="@string/select_time"
                 android:textColor="@color/black"
                 android:fontFamily="@font/poppins_regular"
-                android:textSize="18sp"
-                android:text="8:00 AM"/>
+                android:textSize="18sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/tvEvEndTime"
+                android:text="@string/select_time"
                 android:layout_alignParentEnd="true"
                 android:textColor="@color/black"
                 android:fontFamily="@font/poppins_regular"
                 android:textSize="18sp"
-                android:text="9:30 PM"/>
+                />
 
         </RelativeLayout>
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btAdd"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:text="@string/add"
+            android:textColor="@color/white"
+            android:background="@drawable/ic_blue_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btAddTiming"
+            />
 
     </LinearLayout>
 
