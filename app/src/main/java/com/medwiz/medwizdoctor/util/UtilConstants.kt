@@ -41,9 +41,9 @@ object UtilConstants {
     const val refreshToken = "medwizRefreshToken"
     const val nearbyDocs="NEAR_BY_DOCS"
     const val nearbyDocsValue=10
-    const val baseurl = "http://52.66.214.145:9090/api/v1/"//"http://10.0.2.2:8080/api/v1/
+    const val baseurl ="http://52.66.214.145:9090/api/v1/" // "http://10.0.2.2:8080/api/v1/"
 
- const val addMedicine="medicine"
+    const val addMedicine="medicine"
     const val updateMedicine="medicine/safeupdate"
  const val addLabTest="labtest"
     const val register = "user/signup"

@@ -1,4 +1,5 @@
 package com.medwiz.medwizdoctor.data
+import com.medwiz.medwiz.data.reponse.CommonResponse
 import com.medwiz.medwizdoctor.model.FileResponse
 import com.medwiz.medwizdoctor.util.UtilConstants
 import okhttp3.MultipartBody
@@ -10,7 +11,7 @@ interface FileApi {
     @POST(UtilConstants.uploadProfilePictureApi+"{doctorUserId}")
     suspend fun upload(@Header("Authorization") accessToken: String,
                        @Part file: MultipartBody.Part,
-                       @Path("email")email:String): Response<String>
+                       @Path("doctorUserId")doctorUserId:String): Response<CommonResponse>
 
 
 }

@@ -1,9 +1,9 @@
-package com.medwiz.medwiz.model
+package com.medwiz.medwizdoctor.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
-@Parcelize
+
 data class RegisterRequest(
     var name:String,
     var shopType:String,
@@ -21,10 +21,11 @@ data class RegisterRequest(
     var isActivated:Boolean,
     var licencePath:String,
     var city:String,
-): Parcelable {
+    var state:String,
+) {
     constructor() : this("","","", "",
         "", "", "",
         "", "", "",
-        "", "","",false,"",""
+        "", "","",false,"","",""
     )
 }

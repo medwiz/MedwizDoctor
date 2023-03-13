@@ -1,4 +1,6 @@
 package com.medwiz.medwizdoctor.di
+
+import com.google.gson.GsonBuilder
 import com.medwiz.medwizdoctor.data.*
 import com.medwiz.medwizdoctor.repository.auth.AuthRepoInterface
 import com.medwiz.medwizdoctor.repository.auth.AuthRepository
@@ -25,6 +27,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
+
 @Module
 @InstallIn(SingletonComponent::class)
 object ApiModule {
@@ -46,6 +49,7 @@ object ApiModule {
     @Provides
     @Singleton
     fun provideRetrofit(client: OkHttpClient): Retrofit {
+        val gson = GsonBuilder().setLenient().create()
         return Retrofit.Builder()
             .baseUrl(UtilConstants.baseurl)
             .addConverterFactory(GsonConverterFactory.create())

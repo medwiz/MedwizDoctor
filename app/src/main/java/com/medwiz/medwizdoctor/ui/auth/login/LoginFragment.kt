@@ -19,7 +19,7 @@ import com.medwiz.medwizdoctor.ui.main.MainActivity
 import com.medwiz.medwizdoctor.util.MedWizUtils
 import com.medwiz.medwizdoctor.util.Resource
 import com.medwiz.medwizdoctor.util.UtilConstants
-import com.medwiz.medwizdoctor.viewmodels.AuthViewModel
+import com.medwiz.medwizdoctor.ui.auth.AuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 

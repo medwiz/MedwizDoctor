@@ -10,6 +10,7 @@ import com.medwiz.medwiz.model.ProfileItemModel
 import com.medwiz.medwizdoctor.R
 import com.medwiz.medwizdoctor.databinding.FragmentAddClinicBinding
 import com.medwiz.medwizdoctor.databinding.FragmentProfileBinding
+import com.medwiz.medwizdoctor.model.Clinic
 import com.medwiz.medwizdoctor.ui.profile.ProfileItemAdapter
 import com.medwiz.medwizdoctor.util.MedWizUtils
 import com.medwiz.medwizdoctor.util.UtilConstants
@@ -17,7 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
 @AndroidEntryPoint
-class AddClinicFragment:Fragment(R.layout.fragment_add_clinic) {
+class AddClinicFragment:Fragment(R.layout.fragment_add_clinic),ClinicListener {
     private lateinit var binding: FragmentAddClinicBinding
     private var adapter: ClinicItemAdapter?=null
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -31,25 +32,24 @@ class AddClinicFragment:Fragment(R.layout.fragment_add_clinic) {
         binding.btSave.setOnClickListener {
 
         }
+        binding.btAddClinic.visibility=View.GONE
 
-        binding.btAddClinic.setOnClickListener {
-          findNavController().navigate(R.id.action_addClinicFragment_to_clinicDetailsFragment)
-        }
+//        binding.btAddClinic.setOnClickListener {
+//          findNavController().navigate(R.id.action_addClinicFragment_to_clinicDetailsFragment)
+//        }
         val profileItem1= ProfileItemModel(UtilConstants.ITEM_PROFILE,"Notification",R.drawable.ic_notification)
-        val profileItem2= ProfileItemModel(UtilConstants.ITEM_EDIT_PROFILE,"Privacy & Policy",R.drawable.ic_privacy)
-        val profileItem3= ProfileItemModel(UtilConstants.ITEM_SETTING,"Help Center",R.drawable.ic_help_center)
         val lis= ArrayList<ProfileItemModel>()
         lis.add(profileItem1)
-        lis.add(profileItem2)
-        lis.add(profileItem3)
-        adapter = ClinicItemAdapter(requireActivity(),lis)
+
+        adapter = ClinicItemAdapter(requireActivity(),this,lis)
         binding.rcvClinic.adapter = adapter
         binding.rcvClinic.layoutManager = LinearLayoutManager(requireActivity())
 
     }
 
-
-
+    override fun onSelectClinic(obj: Any, position: Int) {
+        findNavController().navigate(R.id.action_addClinicFragment_to_clinicDetailsFragment)
+    }
 
 
 }

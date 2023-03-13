@@ -2,11 +2,12 @@ package com.medwiz.medwizdoctor.ui.profile
 
 import android.content.Context
 import android.content.pm.PackageManager
-import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
@@ -14,53 +15,139 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.Request
 import com.bumptech.glide.request.target.SizeReadyCallback
 import com.bumptech.glide.request.target.Target
 import com.bumptech.glide.request.transition.Transition
 import com.medwiz.medwiz.model.Doctors
-import com.medwiz.medwiz.model.ProfileItemModel
 
 import com.medwiz.medwizdoctor.R
 import com.medwiz.medwizdoctor.databinding.FragmentEditProfileBinding
-import com.medwiz.medwizdoctor.databinding.FragmentProfileBinding
-import com.medwiz.medwizdoctor.model.User
 import com.medwiz.medwizdoctor.ui.main.MainActivity
-import com.medwiz.medwizdoctor.util.FileUtils
-import com.medwiz.medwizdoctor.util.MedWizUtils
-import com.medwiz.medwizdoctor.util.UtilConstants
-import com.medwiz.medwizdoctor.viewmodels.ProfileViewModel
+import com.medwiz.medwizdoctor.util.*
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.io.File
-import java.util.*
 
 @AndroidEntryPoint
 class EditProfileFragment:Fragment(R.layout.fragment_edit_profile),View.OnClickListener {
     private lateinit var binding: FragmentEditProfileBinding
-    private val profileViewModel: ProfileViewModel by viewModels()
+    private val viewModel: ProfileViewModel by viewModels()
     private var user: Doctors?=null
-    private var adapter: ProfileItemAdapter?=null
+    private var token:String=""
+    private var userId:String=""
+    var currencyList = arrayOf("SELECT CURRENCY","INR", "USD")
+    private var strCurrency:String="INR"
+    private val getFile=registerForActivityResult(
+        ActivityResultContracts.GetContent()) {
+        val file: File = FileUtil2.from(requireContext(), it)
+        binding.tvUpload.text = file.name
+        val filePart=FileUtil2.prepareFilePart("file",file,it,requireContext())
+       // viewModel.uploadFile(token,filePart,userId)
+
+
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentEditProfileBinding.bind(view)
+        this.user=(activity as MainActivity).getUserDetails()
+         setUi(user!!)
         binding.tvBack.setOnClickListener (this)
         binding.tvUpload.setOnClickListener(this)
         binding.btAddClinic.setOnClickListener  (this)
         binding.ivCamera.setOnClickListener (this)
-        this.user=(activity as MainActivity).getUserDetails()
+        setCurrency()
+         token=
+            MedWizUtils.storeValueInPreference(requireContext(), UtilConstants.accessToken,"",false)
+         userId=  MedWizUtils.storeValueInPreference(
+            requireContext(),
+            UtilConstants.userId,
+            "",
+            false
+        )
 
+        viewModel.uploadFile.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+            when (it) {
+                is Resource.Loading -> {
+                    (activity as MainActivity).showLoading()
+                }
+
+                is Resource.Success -> {
+                    (activity as MainActivity).hideLoading()
+                    MedWizUtils.showErrorPopup(
+                        requireActivity(),
+                        it.data!!.message
+                    )
+                }
+                is Resource.Error -> {
+                    (activity as MainActivity).hideLoading()
+                    if(it.message==UtilConstants.unauthorized){
+                        MedWizUtils.performLogout(requireContext(),requireActivity())
+                    }else{
+                        MedWizUtils.showErrorPopup(
+                            requireActivity(),
+                            it.message.toString()
+                        )
+                    }
+                }
+            }
+        })
+
+
+    }
+
+    private fun setCurrency() {
+        val aa = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, currencyList)
+        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        // Set Adapter to Spinner
+        binding.spinnerCurrency.adapter = aa
+
+        binding.spinnerCurrency.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+
+                if(position>0){
+                    strCurrency=currencyList[position]
+                }
+
+            }
+
+        }
+    }
+
+    private fun setUi(userDetails: Doctors) {
+        binding.etFirstName.setText(userDetails.user.firstName)
+        binding.etLastName.setText(userDetails.user.lastName)
+        binding.etPhoneNumber.setText(userDetails.user.userPhoneNumber)
+        binding.etMail.setText(userDetails.user.email)
+
+        if(userDetails.user.imageUrl!=null&&userDetails.user.imageUrl.isNotEmpty()){
+        Glide.with(requireContext())
+            .load(user!!.user.imageUrl)
+            .diskCacheStrategy(DiskCacheStrategy.NONE)
+            .skipMemoryCache(true)
+            .into(binding.profilePic)
+        }
+        if(userDetails.certificateUrl!=null&&userDetails.certificateUrl.isNotEmpty()){
+            binding.tvBack.text="Update your Certificate"
+        }
     }
 
     override fun onClick(view: View?) {
         when (view) {
             binding.tvUpload -> {
-                askCameraOrGalleryOptions()
+                getFile.launch("application/pdf")
+               // askCameraOrGalleryOptions()
             }
             binding.ivCamera->{
                 askCameraOrGalleryOptions()
@@ -114,7 +201,7 @@ class EditProfileFragment:Fragment(R.layout.fragment_edit_profile),View.OnClickL
 
     var photoURI: Uri? = null
     private fun askCameraOrGalleryOptions() {
-        if (hasPermissions(activity as Context, UtilConstants.PERMISSIONS)) {
+        if (!hasPermissions(activity as Context, UtilConstants.PERMISSIONS)) {
             val items = arrayOf("Camera", "Gallery")
             val builder = AlertDialog.Builder(requireContext())
             with(builder) {
@@ -142,7 +229,7 @@ class EditProfileFragment:Fragment(R.layout.fragment_edit_profile),View.OnClickL
             val granted = permissions.entries.all {
                 it.value
             }
-            if (granted) {
+            if (!granted) {
                 askCameraOrGalleryOptions()
             }
         }
@@ -166,18 +253,23 @@ class EditProfileFragment:Fragment(R.layout.fragment_edit_profile),View.OnClickL
                 override fun onResourceReady(
                     resource: Drawable, transition: Transition<in Drawable>?
                 ) {
-                    if (resource is BitmapDrawable) {
-                        lifecycleScope.launch {
-                            val file: File = FileUtils.saveFileInCache(
-                                requireActivity(),
-                                resource.bitmap,
-                                "tmp_" + System.currentTimeMillis() + ".jpg")!!
-                            withContext(Dispatchers.Main) {
-//                                profileViewModel.uploadFile.value = FileUploadRequest(
-//                                    file = file
-//                                )
-                            }
-                        }
+                    val file: File = FileUtil2.from(requireContext(),result)
+                    binding.profilePic.setImageDrawable(resource)//setImage(ImageSource.bitmap(bitmap));
+//                    if (resource is BitmapDrawable) {
+//                        lifecycleScope.launch {
+//                            val file: File = FileUtils.saveFileInCache(requireActivity(), resource.bitmap,
+//                                userId + System.currentTimeMillis() + ".jpg")!!
+//                            withContext(Dispatchers.Main) {
+//                                val filePart= FileUtil2.prepareFilePart(userId,file,result,requireContext())
+//                                viewModel.uploadFile(token,filePart,userId)
+//                            }
+//                        }
+//                    }
+
+                    lifecycleScope.launch {withContext(Dispatchers.Main) {
+                        val filePart= FileUtil2.prepareFilePart("file",file,result,requireContext())
+                        viewModel.uploadFile(token,filePart,userId)
+                    }
                     }
                 }
 

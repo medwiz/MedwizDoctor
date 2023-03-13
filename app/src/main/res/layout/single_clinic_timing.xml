@@ -18,17 +18,33 @@
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:orientation="vertical">
-
-        <TextView
+        
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/tvDay"
-            android:layout_gravity="center"
-            android:textColor="@color/black"
-            android:fontFamily="@font/poppins_medium"
-            android:gravity="center"
-            android:textSize="18sp"
-            android:text="Day: Monday"/>
+            android:padding="2dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvDay"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins_medium"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:text="Day: Monday"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imgDelete"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/ic_cancel"/>
+
+        </RelativeLayout>
+
+
 
         <RelativeLayout
             android:layout_width="match_parent"

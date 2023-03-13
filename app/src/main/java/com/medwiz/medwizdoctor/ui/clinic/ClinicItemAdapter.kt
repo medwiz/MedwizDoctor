@@ -15,6 +15,7 @@ import com.medwiz.medwizdoctor.databinding.SingleProfileItemBinding
 
 
 class ClinicItemAdapter (private val context: Context,
+                         private val listener: ClinicListener,
                          private val itemList:MutableList<ProfileItemModel>,
 ): RecyclerView.Adapter<ClinicItemAdapter.ClinicItemItemViewHolder>(){
 
@@ -38,7 +39,9 @@ class ClinicItemAdapter (private val context: Context,
 
     inner class ClinicItemItemViewHolder(val binding: ClinicSingleItemBinding): RecyclerView.ViewHolder(binding.root){
         fun bind(profileItem: ProfileItemModel, position: Int){
-            binding.tvClinicName.text="Clinic"+(position+1)
+           binding.liMain.setOnClickListener {
+               listener.onSelectClinic(profileItem,position)
+           }
 
 
 

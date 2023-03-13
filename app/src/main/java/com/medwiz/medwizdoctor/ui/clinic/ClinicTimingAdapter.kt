@@ -39,7 +39,9 @@ class ClinicTimingAdapter (private val context: Context,
 
     inner class ClinicTimingViewHolder(val binding: SingleClinicTimingBinding): RecyclerView.ViewHolder(binding.root){
         fun bind(profileItem: ProfileItemModel, position: Int){
+          binding.imgDelete.setOnClickListener {
 
+          }
         }
     }
 }

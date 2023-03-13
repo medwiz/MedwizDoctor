@@ -102,7 +102,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvFNameTitle"
-              />
+                />
 
 
             <TextView
@@ -130,7 +130,6 @@
                 android:background="@drawable/layout_rounded_bg"
                 android:inputType="textPersonName"
                 android:padding="5dp"
-                android:maxLength="10"
                 android:fontFamily="@font/poppins_regular"
                 android:textColor="@color/black"
                 android:textSize="14sp"
@@ -223,7 +222,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvPhoneTitle"
-              />
+                />
 
             <TextView
                 android:id="@+id/tvMailTitle"
@@ -283,7 +282,6 @@
                 android:background="@drawable/layout_rounded_bg"
                 android:inputType="textPostalAddress"
                 android:padding="5dp"
-                android:maxLength="10"
                 android:fontFamily="@font/poppins_regular"
                 android:textColor="@color/black"
                 android:textSize="14sp"
@@ -315,7 +313,6 @@
                 android:background="@drawable/layout_rounded_bg"
                 android:inputType="textPostalAddress"
                 android:padding="5dp"
-                android:maxLength="10"
                 android:fontFamily="@font/poppins_regular"
                 android:textColor="@color/black"
                 android:textSize="14sp"
@@ -347,7 +344,6 @@
                 android:background="@drawable/layout_rounded_bg"
                 android:inputType="text"
                 android:padding="5dp"
-                android:maxLength="10"
                 android:fontFamily="@font/poppins_regular"
                 android:textColor="@color/black"
                 android:textSize="14sp"
@@ -373,7 +369,7 @@
                 />
 
             <EditText
-                android:id="@+id/etPincode"
+                android:id="@+id/etPinCode"
                 android:layout_width="match_parent"
                 android:layout_height="46dp"
                 android:background="@drawable/layout_rounded_bg"
@@ -386,6 +382,68 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvPincode"/>
+
+            <TextView
+                android:id="@+id/tvPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/password"
+                android:textSize="@dimen/h5_sp_14"
+                android:lineSpacingExtra="4sp"
+                android:translationY="-1.79sp"
+                android:textColor="#303245"
+                android:gravity="start"
+                android:layout_marginTop="@dimen/h5_dp_14"
+                android:fontFamily="@font/poppins_regular"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etPinCode"
+                />
+
+            <EditText
+                android:id="@+id/etPassword"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:background="@drawable/layout_rounded_bg"
+                android:inputType="textWebPassword"
+                android:padding="5dp"
+                android:fontFamily="@font/poppins_regular"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvPassword"/>
+
+            <TextView
+                android:id="@+id/tvConfirmPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/confirm_password"
+                android:textSize="@dimen/h5_sp_14"
+                android:lineSpacingExtra="4sp"
+                android:translationY="-1.79sp"
+                android:textColor="#303245"
+                android:gravity="start"
+                android:layout_marginTop="@dimen/h5_dp_14"
+                android:fontFamily="@font/poppins_regular"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etPassword"
+                />
+
+            <EditText
+                android:id="@+id/etConfirmPassword"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:background="@drawable/layout_rounded_bg"
+                android:inputType="textWebPassword"
+                android:padding="5dp"
+                android:fontFamily="@font/poppins_regular"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvConfirmPassword"/>
 
 
             <androidx.appcompat.widget.AppCompatButton
@@ -403,7 +461,7 @@
                 android:gravity="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/etPincode" />
+                app:layout_constraintTop_toBottomOf="@+id/etConfirmPassword" />
 
             <LinearLayout
                 android:layout_width="wrap_content"

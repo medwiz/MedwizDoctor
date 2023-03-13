@@ -1,4 +1,4 @@
-package com.medwiz.medwizdoctor.viewmodels
+package com.medwiz.medwizdoctor.ui.profile
 
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
@@ -7,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import com.google.gson.Gson
 import com.medwiz.medwiz.data.reponse.CommonResponse
 import com.medwiz.medwizdoctor.repository.file.FileRepoInterface
-import com.medwiz.medwizdoctor.model.FileResponse
 import com.medwiz.medwizdoctor.util.NetworkUtils
 import com.medwiz.medwizdoctor.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -19,11 +18,11 @@ import java.io.IOException
 import javax.inject.Inject
 
 @HiltViewModel
-class FileViewModel @Inject constructor(private val repository: FileRepoInterface, @ApplicationContext private val context: Context):ViewModel() {
+class ProfileViewModel @Inject constructor(private val repository: FileRepoInterface, @ApplicationContext private val context: Context):ViewModel() {
 
 
-    val uploadFile:MutableLiveData<Resource<String>> = MutableLiveData()
-    var uploadFileResponse:String?=null
+    val uploadFile:MutableLiveData<Resource<CommonResponse>> = MutableLiveData()
+    var uploadFileResponse:CommonResponse?=null
 
 
 
@@ -48,12 +47,14 @@ class FileViewModel @Inject constructor(private val repository: FileRepoInterfac
         }
     }
 
-    private fun handleFileUploadResponse(response: Response<String>): Resource<String> {
+    private fun handleFileUploadResponse(response: Response<CommonResponse>): Resource<CommonResponse> {
         if (response.isSuccessful) {
             response.body()?.let { resultResponse ->
-                if(resultResponse.isNotEmpty()) {
+                if(resultResponse.success) {
                     uploadFileResponse = resultResponse
                     return Resource.Success(uploadFileResponse ?: resultResponse)
+                }else{
+                    return Resource.Error(response.message())
                 }
             }
         }

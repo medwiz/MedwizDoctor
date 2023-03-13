@@ -1,5 +1,6 @@
 package com.medwiz.medwizdoctor.repository.file
 
+import com.medwiz.medwiz.data.reponse.CommonResponse
 import com.medwiz.medwizdoctor.data.FileApi
 import com.medwiz.medwizdoctor.model.FileResponse
 import okhttp3.MultipartBody
@@ -9,7 +10,7 @@ import javax.inject.Inject
 class FileRepository @Inject constructor(private val api: FileApi): FileRepoInterface {
 
 
-    override suspend fun uploadFile(token:String,file: MultipartBody.Part,doctorId:String): Response<String> {
+    override suspend fun uploadFile(token:String,file: MultipartBody.Part,doctorId:String): Response<CommonResponse> {
 
         return api.upload(token,file,doctorId)
     }

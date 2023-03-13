@@ -45,8 +45,8 @@ object MedWizUtils {
         formatter = SimpleDateFormat("h:mm a")
         return formatter.format(tme)
     }
-    fun showToast(context: Context,str:String){
-        Toast.makeText(context,str, Toast.LENGTH_SHORT).show()
+    fun showToast(message: String, activity: Context) {
+        Toast.makeText(activity,message,Toast.LENGTH_SHORT).show()
     }
 
      fun showErrorPopup(activity: Context, message: String) {

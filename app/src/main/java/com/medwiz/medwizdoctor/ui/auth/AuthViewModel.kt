@@ -1,4 +1,4 @@
-package com.medwiz.medwizdoctor.viewmodels
+package com.medwiz.medwizdoctor.ui.auth
 
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.medwiz.medwiz.data.reponse.CommonResponse
-import com.medwiz.medwiz.model.RegisterRequest
+import com.medwiz.medwizdoctor.model.RegisterRequest
 import com.medwiz.medwizdoctor.repository.auth.AuthRepoInterface
 import com.medwiz.medwizdoctor.R
 import com.medwiz.medwizdoctor.model.LoginResponse
@@ -40,11 +40,22 @@ class AuthViewModel @Inject constructor(private val repository: AuthRepoInterfac
 
     fun signUp(request: RegisterRequest)=viewModelScope.launch {
         val requestObj = JsonObject()
-
-
+        requestObj.addProperty("userPhoneNumber",request.mobile)
         requestObj.addProperty(UtilConstants.PASSWORD, request.password)
         requestObj.addProperty(UtilConstants.email, request.email)
-        requestObj.addProperty(UtilConstants.userType, request.userType)
+        requestObj.addProperty("firstName",request.firstname)
+        requestObj.addProperty("lastName",request.lastname)
+        requestObj.addProperty("gender",request.gender)
+        requestObj.addProperty("age",request.age)
+        requestObj.addProperty("roleName","DOCTOR")
+        requestObj.addProperty("address1",request.address)
+        requestObj.addProperty("address2","")
+        requestObj.addProperty("city",request.city)
+        requestObj.addProperty("state",request.state)
+        requestObj.addProperty("zip",request.pinCode)
+        requestObj.addProperty("country","India")
+        requestObj.addProperty("latitude",0.0)
+        requestObj.addProperty("longitude",0.0)
         callRegisterApi(requestObj)
     }
 

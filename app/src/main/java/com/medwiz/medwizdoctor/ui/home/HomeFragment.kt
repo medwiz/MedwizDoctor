@@ -5,7 +5,9 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.medwiz.medwizdoctor.R
 import com.medwiz.medwizdoctor.databinding.FragmentHomeBinding
 import com.medwiz.medwizdoctor.ui.main.MainActivity
@@ -48,9 +50,14 @@ class HomeFragment: Fragment(R.layout.fragment_home) {
                     binding.tvDocName.text=name
                     Glide.with(requireContext())
                         .load(it.data.user.imageUrl)
+                        .diskCacheStrategy(DiskCacheStrategy.NONE)
+                        .skipMemoryCache(true)
                         .into(binding.imgProfilePic)
 
-
+                    if(!it.data.isApproved){
+                        MedWizUtils.showToast("Please Update your profile and clinic details!",requireActivity())
+                        findNavController().navigate(R.id.action_homeFragment_to_editProfileFragment)
+                    }
                 }
                 is Resource.Error -> {
                     (activity as MainActivity).hideLoading()

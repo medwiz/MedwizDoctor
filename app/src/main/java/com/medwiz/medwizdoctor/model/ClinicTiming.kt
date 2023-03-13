@@ -7,7 +7,7 @@ import kotlinx.parcelize.Parcelize
  * @Author: Prithwiraj Nath
  * @Date:12/03/23
  */
-@Parcelize
+
 data class ClinicTiming(
     var day: String,
     var morningStartTime: String,
@@ -16,6 +16,6 @@ data class ClinicTiming(
     var afterNoonEndTime: String,
     var eveningStartTime: String,
     var eveningEndTime: String
-): Parcelable {
+) {
     constructor() : this("","", "", "","","","")
 }
